@@ -5,6 +5,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 import time
+import json
+  
+# Opening JSON file
+f = open('config.json',)
+config = json.load(f)
+f.close()
 
 is_marcado = False
 
@@ -17,37 +23,37 @@ while is_marcado==False:
         browser.get(('https://covid19.min-saude.pt/pedido-de-agendamento/'))
 
         dia = browser.find_element_by_id('f_dia')
-        dia.send_keys("16") ######### MUDAR AQUI
+        dia.send_keys(str(config["dia"]))
         mes = browser.find_element_by_id('f_mes')
-        mes.send_keys("7") ######### MUDAR AQUI
+        mes.send_keys(str(config["mes"]))
         ano = browser.find_element_by_id('f_ano')
-        ano.send_keys("1998") ######### MUDAR AQUI
+        ano.send_keys(str(config["ano"]))
         nextButton = browser.find_element_by_xpath("//input[@value='Validar']")
         nextButton.click()
 
         n_utente = browser.find_element_by_id('HealthcardNumber')
-        n_utente.send_keys("179961812") ######### MUDAR AQUI
+        n_utente.send_keys(str(config["n_utente"]))
         nome = browser.find_element_by_id('FullName') 
-        nome.send_keys("Tiago de Faria Ferreira") ######### MUDAR AQUI
+        nome.send_keys(str(config["nome"]))
         data = browser.find_element_by_id('BirthDate')
-        data.send_keys("16/07/1998") ######### MUDAR AQUI
+        data.send_keys(str(config["data"]))
 
         nextButton = browser.find_element_by_xpath("//button[@class='btn btn-primary submit-login g-recaptcha']")
         nextButton.click()
 
         distrito = browser.find_element_by_id('ddl_district_vac')
-        distrito.send_keys("Braga") ######### MUDAR AQUI
+        distrito.send_keys(str(config["distrito"]))
         concelho = browser.find_element_by_id('ddl_county_vac')
-        concelho.send_keys("Vila Verde") ######### MUDAR AQUI
+        concelho.send_keys(str(config["concelho"]))
 
         time.sleep(3) # time sleep para dar tempo de as opções aparecerem
 
         local = browser.find_element_by_id('ddl_local_vac')
-        local.send_keys("USF Prado") ######### MUDAR AQUI
+        local.send_keys(str(config["local"]))
         telefone1 = browser.find_element_by_id('txt_contacto_preferencial')
-        telefone1.send_keys("963864511") ######### MUDAR AQUI
+        telefone1.send_keys(str(config["telemovel"]))
         telefone2 = browser.find_element_by_id('repeat_txt_contacto_preferencial')
-        telefone2.send_keys("963864511") ######### MUDAR AQUI
+        telefone2.send_keys(str(config["telemovel"]))
         termos = browser.find_element_by_id('terms')
         termos.click()
 
