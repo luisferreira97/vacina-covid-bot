@@ -7,10 +7,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 import json
   
-# Opening JSON file
-f = open('config.json',)
-config = json.load(f)
-f.close()
+# abrir ficheiro config
+with open('config.json', encoding='utf-8-sig') as f:
+    config = json.load(f)
 
 is_marcado = False
 
@@ -67,7 +66,8 @@ while is_marcado==False:
         time.sleep(3) # time sleep para dar tempo de aparecer o pop up
 
         try:
-            nextButton = browser.find_element_by_id('modal-slots-exit') # este botão só aparece se houver datas
+            # este botão só aparece se houver datas, por isso se não existir é porque não há datas
+            nextButton = browser.find_element_by_id('modal-slots-exit') 
             nextButton.click()
             nextButton = browser.find_element_by_id('submitdate')
             nextButton.click()   
@@ -86,4 +86,4 @@ while is_marcado==False:
         text_file.write(time.strftime("%d/%m/%y %H:%M:%S") + ": Erro\n")
         text_file.close()        
 
-    time.sleep(600) ######### MUDAR AQUI periodicidade 
+    time.sleep(int(config["periodicidade"]))
