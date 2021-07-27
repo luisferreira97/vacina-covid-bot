@@ -65,19 +65,19 @@ while is_marcado==False:
             nextButton.click()
             nextButton = browser.find_element_by_id('submitdate')
             nextButton.click()   
-            text_file = open("C:\\Users\\lferreira\\Downloads\\logs.txt", "a") ######### MUDAR AQUI
-            text_file.write("Há datas\n")
+            text_file = open("logs.txt", "a")
+            text_file.write(time.strftime("%d/%m/%y %H:%M:%S") + ": Marcado!\n")
             text_file.close() 
             is_marcado = True
         except:
-            text_file = open("C:\\Users\\lferreira\\Downloads\\logs.txt", "a") ######### MUDAR AQUI
-            text_file.write("Nao ha datas\n")
+            text_file = open("logs.txt", "a")
+            text_file.write(time.strftime("%d/%m/%y %H:%M:%S") + ": Nao ha datas\n")
             text_file.close()
 
         browser.close()
     except:
-        text_file = open("C:\\Users\\lferreira\\Downloads\\logs.txt", "a") ######### MUDAR AQUI
-        text_file.write("Erro\n")
+        text_file = open("logs.txt", "a")
+        text_file.write(time.strftime("%d/%m/%y %H:%M:%S") + ": Erro\n")
         text_file.close()        
 
     time.sleep(600) ######### MUDAR AQUI periodicidade 
