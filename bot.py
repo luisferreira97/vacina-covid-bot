@@ -10,8 +10,8 @@ is_marcado = False
 
 while is_marcado==False:
     try:
-        #chrome_options = Options()
-        #chrome_options.add_argument("headless")
+        #chrome_options = Options() 
+        #chrome_options.add_argument("headless") # TO DO: colocar a correr em modo headless
 
         browser = webdriver.Chrome(ChromeDriverManager().install())
         browser.get(('https://covid19.min-saude.pt/pedido-de-agendamento/'))
@@ -80,4 +80,4 @@ while is_marcado==False:
         text_file.write("Erro\n")
         text_file.close()        
 
-    time.sleep(600)
+    time.sleep(600) ######### MUDAR AQUI periodicidade 
