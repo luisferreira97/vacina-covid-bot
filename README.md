@@ -3,6 +3,6 @@ Script para autoagendar automaticamente vacina covid usando Selenium. Este bot u
 
 ## Passos:
 
-1. Editar ficheiro config.json com dados respetivos (dados pessoas, periodicidade
+1. Editar ficheiro config.json com dados respetivos (dados pessoas, periodicidade da procura)
 2. Instalar dependências: ``` pip install -r requirements.txt ```
 3. Correr ficheiro bot.py: ``` python bot.py ```
